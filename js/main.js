@@ -13,11 +13,10 @@ formulario.addEventListener("submit", (evento) => {
     const quantidade = evento.target.elements['quantidade'];
 
     const existe = itens.find(elemento => elemento.nome === nome.value);
-    console.log(existe)
 
     const item = {
         "nome": nome.value,
-        "quantidade": quantidade.value
+        "quantidade": parseInt(quantidade.value)
     }
 
     if (existe) {
@@ -26,6 +25,7 @@ formulario.addEventListener("submit", (evento) => {
         atualizaItem(item);
 
         itens[itens.findIndex(elemento => elemento.id === existe.id)] = item;
+
     } else {
         item.id = itens[itens.length - 1] ? (itens[itens.length - 1]).id + 1 : 0;
 
