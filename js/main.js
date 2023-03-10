@@ -12,6 +12,11 @@ formulario.addEventListener("submit", (evento) => {
     const nome = evento.target.elements['nome'];
     const quantidade = evento.target.elements['quantidade'];
 
+    if (!/^[a-zA-Z]+$/.test(nome.value)) {
+        alert('O nome do item deve conter apenas letras!');
+        return;
+    }
+
     const existe = itens.find(elemento => elemento.nome === nome.value);
 
     const item = {
@@ -21,6 +26,8 @@ formulario.addEventListener("submit", (evento) => {
 
     if (existe) {
         item.id = existe.id;
+
+        item.quantidade += existe.quantidade
 
         atualizaItem(item);
 
